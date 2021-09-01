@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="form-inline mb-3" style="width: 85%;">
+        <h5 class="px-5 font-weight-bold">Columns list</h5>
+        <a href="{% url 'column_create' schema.pk %}" class="btn btn-success ml-auto mr-2">Add columns</a>
+    </div>
+    {% if columns %}
+    <table class="table table-bordered ml-5" style="width: 80%"">
+        <thead>
+            <tr>
+                <th scope=" col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">From</th>
+        <th scope="col">To</th>
+        <th scope="col">Order</th>
+        <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for column in columns %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td class="text-primary">{{ column.name }}</td>
+                <td>{{ column.column_type }}</td>
+
+                {% if column.start_value %}
+                <td>{{ column.start_value }}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                {% if column.end_value %}
+                <td>{{ column.end_value }}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                <td>{{ column.order }}</td>
+                <td>
+                    <a href="{% url 'column_update' column.pk %}" class="text-primary mr-4">Edit</a>
+                    <a href="{% url 'column_delete' column.pk %}" class="text-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="text-center">No columns</p>
+    {% endif %}
+</div>
+{% endblock %}

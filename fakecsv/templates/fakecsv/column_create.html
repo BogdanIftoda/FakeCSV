@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="form-inline">
+        <a href="{% url 'schema_list' %}" class="btn btn-success ml-auto">Submit</a>
+    </div>
+    
+    <h4 class="text-center font-weight-bold">New column</h4>
+    <div class="row mt-5 justify-content-center">
+        <form class="col-sm-5" method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="text-right">
+                <button type='submit' class='btn btn-success'>Add Column</button>
+            </div>
+        </form>
+    </div>
+    {% if columns %}
+    <table class="table table-bordered ml-5 mt-5">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">Order</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for column in columns %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td class="text-primary">{{ column.name }}</td>
+                <td>{{ column.column_type }}</td>
+
+                {% if column.start_value %}
+                <td>{{ column.start_value }}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                {% if column.end_value %}
+                <td>{{ column.end_value }}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                <td>{{ column.order }}</td>
+                <td>
+                    <a href="{% url 'column_delete' column.pk %}" class="text-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="text-center">No columns</p>
+    {% endif %}
+</div>
+</div>
+</div>
+
+{% endblock content %}
+
+
+{% block script %}
+
+<script type="text/javascript">
+
+    $(document).change(function () {
+        var type = $('#id_column_type').val();
+        if (type === "Integer") {
+            $('#id_start_value').prop("disabled", false);
+            $('#id_end_value').prop("disabled", false);
+        } else {
+            $('#id_start_value').prop("disabled", true);
+            $('#id_end_value').prop("disabled", true);
+        }
+    });
+</script>
+{% endblock script %}
