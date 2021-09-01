@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'e!cgx#t!2=#f0cmg8!u7%=&2ziz3=7@#3n!)o!c$5qv^_p#@+u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['bogdan-fake-csv.herokuapp.com', '127.0.0.1']
 
@@ -130,7 +130,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 
 
 MEDIA_URL = '/media/'
