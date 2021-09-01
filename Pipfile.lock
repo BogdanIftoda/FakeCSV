@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "3225fc7a659328779ec722aea5a79c66ff8c78b07a0791ed1b83a90b682a0b0b"
+            "sha256": "f9069a4f12f3cf8c4ceb71c61b27013f2cd802b0caea81f3ed2ead7864e8096f"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -75,6 +75,13 @@
             ],
             "version": "==0.2.0"
         },
+        "dj-database-url": {
+            "hashes": [
+                "sha256:4aeaeb1f573c74835b0686a2b46b85990571159ffc21aa57ecd4d1e1cb334163",
+                "sha256:851785365761ebe4994a921b433062309eb882fedd318e1b0fcecc607ed02da9"
+            ],
+            "version": "==0.5.0"
+        },
         "django": {
             "hashes": [
                 "sha256:32ce792ee9b6a0cbbec340123e229ac9f765dff8c2a4ae9247a14b2ba3a365a7",
@@ -106,6 +113,14 @@
             ],
             "index": "pypi",
             "version": "==1.12.0"
+        },
+        "django-heroku": {
+            "hashes": [
+                "sha256:2bc690aab89eedbe01311752320a9a12e7548e3b0ed102681acc5736a41a4762",
+                "sha256:6af4bc3ae4a9b55eaad6dbe5164918982d2762661aebc9f83d9fa49f6009514e"
+            ],
+            "index": "pypi",
+            "version": "==0.3.1"
         },
         "django-timezone-field": {
             "hashes": [

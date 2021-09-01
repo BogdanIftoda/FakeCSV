@@ -15,6 +15,7 @@ django-celery-results = "*"
 faker = "*"
 gunicorn = "*"
 whitenoise = "*"
+django-heroku = "*"
 
 [dev-packages]
 autopep8 = "*"
